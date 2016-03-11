@@ -67,6 +67,13 @@ describe('extend', function() {
     assert(Ctor.foo === 'bar');
   });
 
+  it('should add an extend method to Parent to add static methods to Ctor:', function() {
+    Parent.extend = extend(Parent);
+    Parent.extend(Ctor);
+    assert(typeof Ctor.extend === 'function');
+    assert(Ctor.foo === 'bar');
+  });
+
   it('should add prototype methods to Ctor:', function() {
     var ext = extend(Parent);
     ext(Ctor);
