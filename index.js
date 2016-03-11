@@ -16,10 +16,21 @@ var util = require('util');
  * constructor onto `Child` constructors.
  *
  * ```js
- * var extend = cu.extend(Parent);
+ * var extend = require('static-extend');
+ * Parent.extend = extend(Parent);
+ *
+ * // optionally pass a custom merge function as the second arg
+ * Parent.extend = extend(Parent, function(Child) {
+ *   Child.prototype.mixin = function(key, val) {
+ *     Child.prototype[key] = val;
+ *   };
+ * });
+ * ```
+ *
+ * // extend "child" constructors
  * Parent.extend(Child);
  *
- * // optional methods
+ * // optionally define prototype methods as the second arg
  * Parent.extend(Child, {
  *   foo: function() {},
  *   bar: function() {}

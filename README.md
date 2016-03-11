@@ -18,28 +18,38 @@ var extend = require('static-extend');
 
 ## API
 
-### [extend](index.js#L36)
+### [extend](index.js#L47)
 
 Returns a function for extending the static properties, prototype properties, and descriptors from the `Parent` constructor onto `Child` constructors.
 
+// extend "child" constructors
+Parent.extend(Child);
+// optionally define prototype methods as the second arg
+Parent.extend(Child, {
+foo: function() {},
+bar: function() {}
+});
+
+```
 **Params**
 
-* `Parent` **{Function}**: Parent ctor
-* `extendFn` **{Function}**: Optional extend function for handling any necessary custom merging. Useful when updating methods that require a specific prototype.
-* `Child` **{Function}**: Child ctor
-* `proto` **{Object}**: Optionally pass additional prototype properties to inherit.
-* `returns` **{Object}**
+* `Parent` **{Function}**: Parent ctor    
+* `extendFn` **{Function}**: Optional extend function for handling any necessary custom merging. Useful when updating methods that require a specific prototype.    
+* `Child` **{Function}**: Child ctor    
+* `proto` **{Object}**: Optionally pass additional prototype properties to inherit.    
+* `returns` **{Object}**  
 
 **Example**
 
 ```js
-var extend = cu.extend(Parent);
-Parent.extend(Child);
+var extend = require('static-extend');
+Parent.extend = extend(Parent);
 
-// optional methods
-Parent.extend(Child, {
-  foo: function() {},
-  bar: function() {}
+// optionally pass a custom merge function as the second arg
+Parent.extend = extend(Parent, function(Child) {
+  Child.prototype.mixin = function(key, val) {
+    Child.prototype[key] = val;
+  };
 });
 ```
 
