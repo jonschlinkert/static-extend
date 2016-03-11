@@ -49,6 +49,7 @@ function extend(Parent, extendFn) {
       Ctor[key] = Parent[key];
     }
 
+    // proto can be null or a plain object
     if (typeof proto === 'object') {
       var obj = Object.create(proto);
 
@@ -57,12 +58,13 @@ function extend(Parent, extendFn) {
       }
     }
 
+    // keep a reference to the parent prototype
     define(Ctor.prototype, '_parent_', {
       configurable: true,
+      set: function() {},
       get: function() {
         return Parent.prototype;
-      },
-      set: function() {}
+      }
     });
 
     if (typeof extendFn === 'function') {
