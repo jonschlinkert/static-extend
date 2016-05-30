@@ -25,7 +25,6 @@ var util = require('util');
  *     Child.prototype[key] = val;
  *   };
  * });
- * ```
  *
  * // extend "child" constructors
  * Parent.extend(Child);
