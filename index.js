@@ -7,6 +7,7 @@
 
 'use strict';
 
+var copy = require('object-copy');
 var define = require('define-property');
 var util = require('util');
 
@@ -54,10 +55,7 @@ function extend(Parent, extendFn) {
     }
 
     util.inherits(Ctor, Parent);
-
-    for (var key in Parent) {
-      Ctor[key] = Parent[key];
-    }
+    copy(Ctor, Parent);
 
     // proto can be null or a plain object
     if (typeof proto === 'object') {

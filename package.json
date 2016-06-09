@@ -20,11 +20,12 @@
     "test": "mocha"
   },
   "dependencies": {
-    "define-property": "^0.2.5"
+    "define-property": "^0.2.5",
+    "object-copy": "^0.1.0"
   },
   "devDependencies": {
-    "gulp-format-md": "^0.1.7",
-    "mocha": "^2.4.5"
+    "gulp-format-md": "^0.1.9",
+    "mocha": "^2.5.3"
   },
   "keywords": [
     "class",
@@ -52,7 +53,8 @@
       "gulp-format-md"
     ],
     "reflinks": [
-      "verb"
+      "verb",
+      "verb-readme-generator"
     ],
     "lint": {
       "reflinks": true
