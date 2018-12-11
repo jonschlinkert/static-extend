@@ -20,8 +20,8 @@
     "test": "mocha"
   },
   "dependencies": {
-    "define-property": "^0.2.5",
-    "object-copy": "^0.1.0"
+    "define-property": "^2.0.2",
+    "object-copy": "^1.0.0"
   },
   "devDependencies": {
     "gulp-format-md": "^0.1.9",
